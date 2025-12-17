@@ -37,7 +37,7 @@ const MOCK_STRENGTHS_MAP: Record<string, string[]> = {
   ],
 }
 
-export async function generateStrengths(candidateId: string): Promise<string[]> {
+export async function generateStrengthsServer(candidateId: string): Promise<string[]> {
   // Simulate API delay
   await new Promise((resolve) => setTimeout(resolve, 800))
 
@@ -49,4 +49,10 @@ export async function generateStrengths(candidateId: string): Promise<string[]> 
       "Team-oriented approach",
     ]
   )
+}
+
+export async function generateStrengths(candidateId: string): Promise<string[]> {
+  // In production, this would call the API route
+  // For now, we're using the mock directly
+  return generateStrengthsServer(candidateId)
 }
